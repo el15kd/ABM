@@ -45,12 +45,10 @@ public:
 	int getData();
 };
 class RepastHPCDemoModel{
-	int stopAt;
-	int countOfAgents;
+	int stopAt, countOfAgents;
 	repast::Properties* props;
 	repast::SharedContext<RepastHPCDemoAgent> context;
-	RepastHPCDemoAgentPackageProvider* provider;
-	RepastHPCDemoAgentPackageReceiver* receiver;
+	RepastHPCDemoAgentPackageProvider* provider; RepastHPCDemoAgentPackageReceiver* receiver;
     DemoModelCustomEdgeContentManager<RepastHPCDemoAgent> edgeContentManager;
 	repast::SVDataSet* agentValues;
 	repast::SharedNetwork<RepastHPCDemoAgent, DemoModelCustomEdge<RepastHPCDemoAgent>, DemoModelCustomEdgeContent<RepastHPCDemoAgent>, DemoModelCustomEdgeContentManager<RepastHPCDemoAgent> >* agentNetwork;

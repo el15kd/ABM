@@ -23,22 +23,19 @@ public:
     /* Setter */
     void set(int currentRank, double newC, double newTotal);
     /* Actions */
-    bool cooperate();                                                 // Will indicate whether the agent cooperates or not; probability determined by = c / total
+    bool cooperate(); // Will indicate whether the agent cooperates or not; probability determined by = c / total
     void play(repast::SharedNetwork<RepastHPCDemoAgent, DemoModelCustomEdge<RepastHPCDemoAgent>,
               DemoModelCustomEdgeContent<RepastHPCDemoAgent>, DemoModelCustomEdgeContentManager<RepastHPCDemoAgent> > *network);
 };
-/* Serializable Agent Package */
+/* Serializable A	gent Package */
 struct RepastHPCDemoAgentPackage {
 public:
-    int id, rank, type, currentRank;
-    double c, total;
+    int id, rank, type, currentRank; double c, total;
     /* Constructors */
     RepastHPCDemoAgentPackage(); // For serialization
     RepastHPCDemoAgentPackage(int _id, int _rank, int _type, int _currentRank, double _c, double _total);
     /* For archive packaging */
     template<class Archive>
-    void serialize(Archive &ar, const unsigned int version){
-        ar & id; ar & rank; ar & type; ar & currentRank; ar & c; ar & total;
-    }
+    void serialize(Archive &ar, const unsigned int version){ar & id; ar & rank; ar & type; ar & currentRank; ar & c; ar & total;}
 };
 #endif
