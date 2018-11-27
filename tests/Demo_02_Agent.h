@@ -8,9 +8,9 @@ class RepastHPCDemoAgent{
 private:
     repast::AgentId  id_; 
 public:
-    RepastHPCDemoAgent(repast::AgentId id); ~RepastHPCDemoAgent(); //RepastHPCDemoAgent(){} RepastHPCDemoAgent(repast::AgentId id);    
-    /* Required Getters */
     int thresh, state=2;
+    RepastHPCDemoAgent(repast::AgentId id, int state); ~RepastHPCDemoAgent(); //RepastHPCDemoAgent(){} RepastHPCDemoAgent(repast::AgentId id);    
+    /* Required Getters */
     virtual repast::AgentId& getId(){return id_;}
     virtual const repast::AgentId& getId() const {return id_;}
     /* Getters specific to this kind of Agent */

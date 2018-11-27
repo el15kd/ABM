@@ -3,7 +3,7 @@
 RepastHPCDemoAgent::RepastHPCDemoAgent(repast::AgentId id): id_(id){ }
 //RepastHPCDemoAgent::RepastHPCDemoAgent(repast::AgentId id{ }
 RepastHPCDemoAgent::~RepastHPCDemoAgent(){ }
-void RepastHPCDemoAgent::set(int currentRank,int state){id_.currentRank(currentRank);state=state;}
+void RepastHPCDemoAgent::set(int currentRank,int state){id_.currentRank(currentRank); state=state;}
 //bool RepastHPCDemoAgent::cooperate(){return repast::Random::instance()->nextDouble() < c/total;}
 int RepastHPCDemoAgent::getState(){return state;}
 void RepastHPCDemoAgent::play(repast::SharedContext<RepastHPCDemoAgent>* context){

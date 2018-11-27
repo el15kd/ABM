@@ -23,7 +23,7 @@ void RepastHPCDemoAgentPackageProvider::provideContent(repast::AgentRequest req,
 /*Receive pkg*/
 RepastHPCDemoAgentPackageReceiver::RepastHPCDemoAgentPackageReceiver(repast::SharedContext<RepastHPCDemoAgent>* agentPtr): agents(agentPtr){}
 RepastHPCDemoAgent * RepastHPCDemoAgentPackageReceiver::createAgent(RepastHPCDemoAgentPackage package){
-    repast::AgentId id(package.id, package.rank, package.type, package.currentRank); return new RepastHPCDemoAgent(id);
+    repast::AgentId id(package.id, package.rank, package.type, package.currentRank); return new RepastHPCDemoAgent(id,package.state);
 }
 /*Update Agent w/ pkg*/
 void RepastHPCDemoAgentPackageReceiver::updateAgent(RepastHPCDemoAgentPackage package){
@@ -63,9 +63,12 @@ RepastHPCDemoModel::RepastHPCDemoModel(std::string propsFile, int argc, char** a
 RepastHPCDemoModel::~RepastHPCDemoModel(){delete props; delete provider; delete receiver; delete agentValues;}
 /*init model*/
 void RepastHPCDemoModel::init(){
-	int rank = repast::RepastProcess::instance()->rank();
+	int rank = repast::RepastProcess::instance()->rank(); 
+	RepastHPCDemoAgent* agent = context.getAgent(toDisplay)
+	//agent->getState();
+	int state = agent->getState();
 	for(int i = 0; i < countOfAgents; i++){
-		repast::AgentId id(i, rank, 0); id.currentRank(rank); RepastHPCDemoAgent* agent = new RepastHPCDemoAgent(id); context.addAgent(agent);
+		repast::AgentId id(i, rank, 0); id.currentRank(rank); RepastHPCDemoAgent* agent = new RepastHPCDemoAgent(id,state); context.addAgent(agent);
 	}
 }
 /*requestAgents*/
@@ -168,7 +171,7 @@ void RepastHPCDemoModel::recordResults(){
     }
 }
 // ELIMINATED
-/*
+/* DAQ
 //DataSource_AgentTotals* agentTotals_DataSource = new DataSource_AgentTotals(&context);
 	//builder.addDataSource(createSVDataSource("Total", agentTotals_DataSource, std::plus<int>()));
 	//DataSource_AgentCTotals* agentCTotals_DataSource = new DataSource_AgentCTotals(&context);
